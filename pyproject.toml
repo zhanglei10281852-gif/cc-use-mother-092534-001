@@ -1,9 +1,12 @@
 [project]
 name = "ccusr-export-guard"
 version = "0.1.0"
-description = "文件导出申请、审批、清单冻结、分片交付与撤销的领域资料"
+description = "受控导出授权中枢：申请、不可变清单、分级会签、版本绑定、幂等分片交付与审计对账"
 requires-python = ">=3.11"
 dependencies = []
+
+[project.scripts]
+export-guard-api = "export_guard.api:main"
 
 [tool.unittest]
 start-directory = "tests"
