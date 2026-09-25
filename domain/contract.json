@@ -1,0 +1,40 @@
+{
+  "project": "受控导出授权中枢",
+  "entities": [
+    "export_request",
+    "manifest",
+    "manifest_entry",
+    "approval",
+    "delivery_chunk",
+    "audit_record"
+  ],
+  "states": [
+    "draft",
+    "classified",
+    "awaiting_approval",
+    "approved",
+    "delivering",
+    "completed",
+    "revoked",
+    "expired"
+  ],
+  "event_types": [
+    "export.requested",
+    "manifest.classified",
+    "approval.recorded",
+    "manifest.invalidated",
+    "chunk.claimed",
+    "export.completed",
+    "export.revoked",
+    "export.expired"
+  ],
+  "time_policy": "ISO 8601 with timezone",
+  "identifier_policy": "同一租户和对象类型内业务标识唯一",
+  "version_policy": "已发布规则与事实通过新版本追加，不覆盖历史",
+  "rules": [
+    "批准必须绑定清单哈希、接收方和有效期",
+    "文件版本改变后旧批准不得继续使用",
+    "同一分片领取键只能产生一次交付事实",
+    "撤销或过期后尚未领取的分片必须拒绝"
+  ]
+}

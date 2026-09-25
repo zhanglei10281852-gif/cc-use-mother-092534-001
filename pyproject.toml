@@ -1,0 +1,9 @@
+[project]
+name = "ccusr-export-guard"
+version = "0.1.0"
+description = "文件导出申请、审批、清单冻结、分片交付与撤销的领域资料"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.unittest]
+start-directory = "tests"
