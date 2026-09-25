@@ -10,35 +10,77 @@
     "event_id": "evt-01-002",
     "event_type": "manifest.classified",
     "aggregate_id": "case-01-001",
-    "occurred_at": "2026-09-25T10:00:00+08:00",
+    "occurred_at": "2026-09-25T09:05:00+08:00",
     "actor_id": "reviewer-02"
   },
   {
     "event_id": "evt-01-003",
     "event_type": "approval.recorded",
     "aggregate_id": "case-01-001",
-    "occurred_at": "2026-09-25T11:00:00+08:00",
-    "actor_id": "operator-01"
+    "occurred_at": "2026-09-25T09:20:00+08:00",
+    "actor_id": "owner-03"
   },
   {
     "event_id": "evt-01-004",
-    "event_type": "manifest.invalidated",
+    "event_type": "approval.recorded",
     "aggregate_id": "case-01-001",
-    "occurred_at": "2026-09-25T12:00:00+08:00",
-    "actor_id": "reviewer-02"
+    "occurred_at": "2026-09-25T09:25:00+08:00",
+    "actor_id": "soc-07"
   },
   {
     "event_id": "evt-01-005",
     "event_type": "chunk.claimed",
     "aggregate_id": "case-01-001",
-    "occurred_at": "2026-09-25T13:00:00+08:00",
+    "occurred_at": "2026-09-25T09:40:00+08:00",
     "actor_id": "operator-01"
   },
   {
     "event_id": "evt-01-006",
+    "event_type": "chunk.claimed",
+    "aggregate_id": "case-01-001",
+    "occurred_at": "2026-09-25T09:41:00+08:00",
+    "actor_id": "operator-01"
+  },
+  {
+    "event_id": "evt-01-007",
     "event_type": "export.completed",
     "aggregate_id": "case-01-001",
-    "occurred_at": "2026-09-25T14:00:00+08:00",
+    "occurred_at": "2026-09-25T09:41:00+08:00",
+    "actor_id": "operator-01"
+  },
+  {
+    "event_id": "evt-02-001",
+    "event_type": "export.requested",
+    "aggregate_id": "case-02-004",
+    "occurred_at": "2026-09-25T10:00:00+08:00",
+    "actor_id": "operator-04"
+  },
+  {
+    "event_id": "evt-02-002",
+    "event_type": "manifest.classified",
+    "aggregate_id": "case-02-004",
+    "occurred_at": "2026-09-25T10:05:00+08:00",
     "actor_id": "reviewer-02"
+  },
+  {
+    "event_id": "evt-02-003",
+    "event_type": "manifest.invalidated",
+    "aggregate_id": "case-02-004",
+    "occurred_at": "2026-09-25T10:30:00+08:00",
+    "actor_id": "reviewer-02"
+  },
+  {
+    "event_id": "evt-02-004",
+    "event_type": "manifest.classified",
+    "aggregate_id": "case-02-004",
+    "occurred_at": "2026-09-25T10:35:00+08:00",
+    "actor_id": "reviewer-02"
+  },
+  {
+    "event_id": "evt-02-005",
+    "event_type": "export.revoked",
+    "aggregate_id": "case-02-004",
+    "occurred_at": "2026-09-25T11:00:00+08:00",
+    "actor_id": "soc-07"
   }
 ]

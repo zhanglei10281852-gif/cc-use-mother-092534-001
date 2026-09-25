@@ -2,21 +2,50 @@
   {
     "code": "P-01-01",
     "name": "版本绑定",
-    "description": "批准必须绑定清单哈希、接收方和有效期"
+    "description": "批准必须绑定清单哈希、接收方和有效期",
+    "applies_to": "approval.recorded",
+    "enforced_by": "ExportAggregate.current_approvals / ensure_claimable"
   },
   {
     "code": "P-01-02",
     "name": "并发边界",
-    "description": "文件版本改变后旧批准不得继续使用"
+    "description": "文件版本改变后旧批准不得继续使用",
+    "applies_to": "manifest.invalidated -> manifest.classified(v+1)",
+    "enforced_by": "清单哈希变化使旧批准 covers() 失败，领取返回 approval_stale"
   },
   {
     "code": "P-01-03",
     "name": "恢复约束",
-    "description": "同一分片领取键只能产生一次交付事实"
+    "description": "同一分片领取键只能产生一次交付事实与一次计费",
+    "applies_to": "chunk.claimed",
+    "enforced_by": "idempotency 表 + billing(claim_key unique) 与事件同事务写入"
   },
   {
     "code": "P-01-04",
     "name": "审计结果",
-    "description": "撤销或过期后尚未领取的分片必须拒绝"
+    "description": "撤销或过期后尚未领取的分片必须拒绝",
+    "applies_to": "export.revoked / export.expired -> chunk 领取",
+    "enforced_by": "ExportAggregate.ensure_claimable"
+  },
+  {
+    "code": "P-02-01",
+    "name": "敏感分级审批",
+    "description": "normal 系统自动批准；confidential 与 restricted 必须由数据所有者和安全值班员共同批准",
+    "applies_to": "manifest.classified -> approval.recorded",
+    "enforced_by": "policy.ApprovalPolicy.required_roles"
+  },
+  {
+    "code": "P-02-02",
+    "name": "有效期上限",
+    "description": "批准有效期 normal≤72h、confidential≤24h、restricted≤8h",
+    "applies_to": "approval.recorded",
+    "enforced_by": "policy.ApprovalPolicy.clamp_validity"
+  },
+  {
+    "code": "P-02-03",
+    "name": "重启恢复",
+    "description": "服务重启后未完成导出必须停留在正确阶段",
+    "applies_to": "全部状态",
+    "enforced_by": "事件流重放重建聚合，无内存态"
   }
 ]
